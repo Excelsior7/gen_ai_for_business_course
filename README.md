@@ -1,13 +1,51 @@
-# GEN AI
+# Albert School MSc 2 - GEN AI FOR BUSINESS COURSE
 
-## 1- SCRAPING 
 
-## Description
-This project allows you to scrape Google reviews for a specific establishment. The retrieved information includes comments, ratings, and review dates. The script uses a Google Review Scraper Actor (Apify) to navigate through the pages and interact with dynamic elements.
+# Google Reviews Analysis with AI  
 
----
+This project allows you to analyze Google reviews for a specific establishment using intelligent categorization powered entirely by artificial intelligence.  
 
-## Usage
+## Project Structure  
+The project is divided into two main parts:  
+
+### 1. **Frontend**  
+The user interface was built with **React**, providing an intuitive and smooth experience for interacting with the data.  
+
+### 2. **Backend**  
+The backend consists of two main components:  
+- **Apify Scraper**  
+   We use the [Google Review Scraper (Apify)](https://apify.com/compass/google-maps-reviews-scraper) to automatically retrieve all Google reviews for a given establishment.  
+   
+- **OpenAI Service**  
+   Once the reviews are extracted, they are sent to the OpenAI API using a prompt (shared below). This script automatically categorizes each review and assigns a sentiment: positive or negative.  
+
+### OpenAI prompt
+
+**prompt_system** = "Your role is to automatically categorize a company's reviews."     
+**prompt** = f"""
+CONTEXT:
+I will share with you a JSON file containing a set of reviews about a company. You should interpret the JSON as follows: {{"id":"comment"}}.
+
+TASK:
+Each review is associated with an id. Your objective is to output a JSON with two elements:
+1. The categories associated with the comment.
+2. Whether the comment is positive or negative. (Polarity)
+
+Regarding the taxonomy, you must follow three rules:
+1. The categories should cover the entire range of comments. Every comment must be categorized.
+2. Use the appropriate level of granularity to facilitate analysis.
+3. Maximize the distance between categories to avoid redundancy.
+
+FORMAT:
+{{"comment id": [[category #1, Polarity of the comment for category #1],[category #2, Polarity of the comment for category #2],...]}}
+
+Important note: I only want the JSON as output, nothing else. For example, I do not want the `json` annotation.
+
+JSON FILE:
+{reviews_text_only}
+"""
+
+# Usage
 
 ## Cloning the GitHub Repository
 

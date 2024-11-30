@@ -24,21 +24,22 @@ def categorize_reviews(reviews):
     1. Les catégories associées au commentaire.
     2. Si le commentaire est positif ou négatif. (Polarité)
 
-    Concernant la taxonomy, tu as trois règles à respecter:
-    1. Les catégories doivent couvrir tous l'espace des commentaires. Chaque commentaire doit être catégorisé. 
+    Concernant la taxonomie, tu as trois règles à respecter:
+    1. Les catégories doivent couvrir tout l'espace des commentaires. Chaque commentaire doit être catégorisé. 
     2. Avoir le bon niveau de granularité pour faciliter les analyses.
     3. Maximiser la distance entre chaque catégorie, pour éviter la redondance.
 
-    Note importante: Merci de tous traduire en anglais.
+    Note importante: Merci de tout traduire en anglais.
 
     FORMAT :
     {{"id du commentaire": [[catégorie #1, Polarité du commentaire concernant la catégorie #1],[catégorie #2, Polarité du commentaire concernant la catégorie #2],...]}}
 
-    Note importante: Je souhaite uniquement le json en sortie, rien d'autres. Donc je ne veux pas l'annotation ```json par exemple.
+    Note importante: Je souhaite uniquement le json en sortie, rien d'autre. Donc je ne veux pas l'annotation ```json par exemple.
 
     FICHIER JSON:
     {reviews_text_only}
     """
+
     response = client.chat.completions.create(model="gpt-4o-mini",
                                             messages=[{"role": "system", "content": prompt_system},
                                                         {"role": "user", "content": prompt}])
