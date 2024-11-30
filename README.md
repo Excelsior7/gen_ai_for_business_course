@@ -3,7 +3,7 @@
 ## 1- SCRAPING 
 
 ## Description
-This project allows you to scrape Google reviews for a specific establishment in a given city. The retrieved information includes comments, ratings, user names, and review dates. The script uses Selenium to navigate through the pages and interact with dynamic elements.
+This project allows you to scrape Google reviews for a specific establishment. The retrieved information includes comments, ratings, and review dates. The script uses a Google Review Scraper Actor (Apify) to navigate through the pages and interact with dynamic elements.
 
 ---
 
