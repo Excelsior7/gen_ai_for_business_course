@@ -32,7 +32,7 @@ Each review is associated with an id. Your objective is to output a JSON with tw
 
 Regarding the taxonomy, you must follow three rules:
 1. The categories should cover the entire range of comments. Every comment must be categorized.
-2. Use the appropriate level of granularity to facilitate analysis.
+2. Use the appropriate level of granularity to facilitate analysis. (Create up to 25 categories)
 3. Maximize the distance between categories to avoid redundancy.
 
 FORMAT:
@@ -138,7 +138,7 @@ After the scraping is completed, you’ll be able to analyze your customer revie
 ## Key Features of the Application  
 
 ### Date Range Filtering  
-- Define two distinct periods (Period A and Period B) using the date picker to filter reviews based on their publication dates. This allows for comparative analysis between different time frames.
+- Define two distinct periods (Reference period and Comparison period) using the date picker to filter reviews based on their publication dates. This allows for comparative analysis between different time frames.
 
 ### Dynamic Filtering Options  
 - Filter reviews by categories, polarities, and star ratings. The application automatically extracts unique categories and polarities from the fetched reviews, making it easy to narrow down your analysis.

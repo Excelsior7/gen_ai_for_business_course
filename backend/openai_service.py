@@ -26,7 +26,7 @@ def categorize_reviews(reviews):
 
     Concernant la taxonomie, tu as trois règles à respecter:
     1. Les catégories doivent couvrir tout l'espace des commentaires. Chaque commentaire doit être catégorisé. 
-    2. Avoir le bon niveau de granularité pour faciliter les analyses.
+    2. Avoir le bon niveau de granularité pour faciliter les analyses. (Crée maximum 25 catégories)
     3. Maximiser la distance entre chaque catégorie, pour éviter la redondance.
 
     Note importante: Merci de tout traduire en anglais.

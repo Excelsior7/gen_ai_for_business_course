@@ -180,7 +180,7 @@ function App() {
               <div className="filters-content">
                 <div className="date-pickers">
                   <div className="period-picker">
-                    <h3>Reference Period</h3>
+                    <h3>Period A (Reference Period)</h3>
                     <DatePicker
                       selected={periodA.startDate}
                       onChange={(date) => setPeriodA({ ...periodA, startDate: date })}
@@ -200,7 +200,7 @@ function App() {
                     />
                   </div>
                   <div className="period-picker">
-                    <h3>Comparison Period</h3>
+                    <h3>Period B (Comparison Period)</h3>
                     <DatePicker
                       selected={periodB.startDate}
                       onChange={(date) => setPeriodB({ ...periodB, startDate: date })}
@@ -283,6 +283,7 @@ function App() {
               {activeWindow === 'reviews' ? (
                 <div className="reviews-section">
                   <h2>Customer Reviews</h2>
+                  <h5>From Period A</h5>
                   <div className="reviews-grid">
                     {getFilteredReviews().map(review => {
                       console.log('Structure complète de l\'avis:', review);

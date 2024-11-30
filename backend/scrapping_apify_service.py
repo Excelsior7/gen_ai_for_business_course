@@ -18,7 +18,6 @@ def apify_scraper_actor(google_maps_path):
     }
 
     response = requests.post(apify_scraper_endpoint,json=json_payload)
-    print(response.text)
 
     reviews = js.loads(response.text)
 
