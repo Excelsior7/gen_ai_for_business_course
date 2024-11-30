@@ -2,20 +2,19 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './App.css';
-import data from './data/data copy.json';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
 function App() {
   // États pour les filtres
   const [periodA, setPeriodA] = useState({
-    startDate: new Date(2024, 0, 1),
-    endDate: new Date(2024, 5, 30),
+    startDate: new Date(2024, 6, 1),
+    endDate: new Date(2024, 11, 31),
     key: 'periodA'
   });
   const [periodB, setPeriodB] = useState({
-    startDate: new Date(2024, 6, 1),
-    endDate: new Date(2024, 11, 31),
+    startDate: new Date(2024, 0, 1),
+    endDate: new Date(2024, 5, 30),
     key: 'periodB'
   });
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -143,13 +142,13 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Analyse des Avis Clients</h1>
+        <h1>Customer Review Analysis</h1>
         {reviewsData.length > 0 && !showUrlInput && (
           <button 
             onClick={() => setShowUrlInput(true)}
             className="new-search-button"
           >
-            Nouvelle recherche
+            New Search
           </button>
         )}
       </header>
@@ -161,7 +160,7 @@ function App() {
               type="text"
               value={urlInput}
               onChange={(e) => setUrlInput(e.target.value)}
-              placeholder="Entrez l'URL de la page d'avis"
+              placeholder="Enter the reviews page URL"
               className="url-input"
             />
             <button 
@@ -169,7 +168,7 @@ function App() {
               disabled={isLoading}
               className="fetch-button"
             >
-              {isLoading ? 'Chargement...' : 'Récupérer les avis'}
+              {isLoading ? 'Loading...' : 'Fetch Reviews'}
             </button>
           </div>
         )}
@@ -177,11 +176,11 @@ function App() {
         {reviewsData.length > 0 && (
           <>
             <div className="filters-panel">
-              <h2>Filtres</h2>
+              <h2>Filters</h2>
               <div className="filters-content">
                 <div className="date-pickers">
                   <div className="period-picker">
-                    <h3>Période A</h3>
+                    <h3>Reference Period</h3>
                     <DatePicker
                       selected={periodA.startDate}
                       onChange={(date) => setPeriodA({ ...periodA, startDate: date })}
@@ -201,7 +200,7 @@ function App() {
                     />
                   </div>
                   <div className="period-picker">
-                    <h3>Période B</h3>
+                    <h3>Comparison Period</h3>
                     <DatePicker
                       selected={periodB.startDate}
                       onChange={(date) => setPeriodB({ ...periodB, startDate: date })}
@@ -224,12 +223,12 @@ function App() {
 
                 <div className="other-filters">
                   <div className="filter-group">
-                    <label>Catégorie</label>
+                    <label>Category</label>
                     <select 
                       value={selectedCategory} 
                       onChange={(e) => setSelectedCategory(e.target.value)}
                     >
-                      <option value="">Toutes les catégories</option>
+                      <option value="">All Categories</option>
                       {uniqueCategories.map(cat => (
                         <option key={cat} value={cat}>{cat}</option>
                       ))}
@@ -237,12 +236,12 @@ function App() {
                   </div>
 
                   <div className="filter-group">
-                    <label>Polarité</label>
+                    <label>Polarity</label>
                     <select 
                       value={selectedPolarity} 
                       onChange={(e) => setSelectedPolarity(e.target.value)}
                     >
-                      <option value="">Toutes les polarités</option>
+                      <option value="">All Polarities</option>
                       {uniquePolarities.map(pol => (
                         <option key={pol} value={pol}>{pol}</option>
                       ))}
@@ -250,14 +249,14 @@ function App() {
                   </div>
 
                   <div className="filter-group">
-                    <label>Note</label>
+                    <label>Rating</label>
                     <select 
                       value={selectedStars} 
                       onChange={(e) => setSelectedStars(e.target.value)}
                     >
-                      <option value="">Toutes les notes</option>
+                      <option value="">All Ratings</option>
                       {[1, 2, 3, 4, 5].map(stars => (
-                        <option key={stars} value={stars}>{stars} étoiles</option>
+                        <option key={stars} value={stars}>{stars} stars</option>
                       ))}
                     </select>
                   </div>
@@ -271,19 +270,19 @@ function App() {
                   className={`window-button ${activeWindow === 'reviews' ? 'active' : ''}`}
                   onClick={() => setActiveWindow('reviews')}
                 >
-                  Avis Clients
+                  Customer Reviews
                 </button>
                 <button 
                   className={`window-button ${activeWindow === 'analytics' ? 'active' : ''}`}
                   onClick={() => setActiveWindow('analytics')}
                 >
-                  Analyses
+                  Analytics
                 </button>
               </div>
 
               {activeWindow === 'reviews' ? (
                 <div className="reviews-section">
-                  <h2>Avis Clients</h2>
+                  <h2>Customer Reviews</h2>
                   <div className="reviews-grid">
                     {getFilteredReviews().map(review => {
                       console.log('Structure complète de l\'avis:', review);
@@ -303,7 +302,7 @@ function App() {
                             </div>
                           </div>
                           <div className="review-content">
-                            <p>{review.comment || review.text || "Aucun commentaire"}</p>
+                            <p>{review.comment || review.text || "No comment"}</p>
                           </div>
                           <div className="review-categories">
                             {review.categories_cat && review.categories_cat.map(([category, polarity], index) => (
@@ -322,22 +321,22 @@ function App() {
                 </div>
               ) : (
                 <div className="analytics-container">
-                  <h2>Analyses</h2>
+                  <h2>Analytics</h2>
                   <div className="statistics-section">
                     <div className="stat-card total-reviews">
                       <div className="stat-icon">📊</div>
-                      <h3>Nombre total d'avis</h3>
+                      <h3>Total Number of Reviews</h3>
                       <div className="stat-content">
                         <div className="stat-period">
-                          <span className="period-label">Période A</span>
+                          <span className="period-label">Period A</span>
                           <span className="stat-number">{reviewsA.length}</span>
                         </div>
                         <div className="stat-period">
-                          <span className="period-label">Période B</span>
+                          <span className="period-label">Period B</span>
                           <span className="stat-number">{reviewsB.length}</span>
                         </div>
                         <div className="stat-evolution">
-                          <span className="evolution-label">Évolution </span>
+                          <span className="evolution-label">Evolution </span>
                           <span className={`evolution-value ${calculateEvolution(reviewsA.length, reviewsB.length).startsWith('-') ? 'negative' : 'positive'}`}>
                             {calculateEvolution(reviewsA.length, reviewsB.length)}
                           </span>
@@ -347,7 +346,7 @@ function App() {
 
                     <div className="stat-card sentiment-analysis">
                       <div className="stat-icon">😊</div>
-                      <h3>Analyse des sentiments</h3>
+                      <h3>Sentiment Analysis</h3>
                       <div className="stat-content">
                         {Object.keys(polarityCountsA || {}).map(polarity => (
                           <div key={polarity} className="sentiment-row">
@@ -369,7 +368,7 @@ function App() {
 
                     <div className="stat-card rating-distribution">
                       <div className="stat-icon">⭐</div>
-                      <h3>Distribution des notes</h3>
+                      <h3>Rating Distribution</h3>
                       <div className="stat-content">
                         {[5, 4, 3, 2, 1].map(stars => (
                           <div key={stars} className="rating-row">
