@@ -135,6 +135,29 @@ Once the URL is submitted, the application will start scraping your reviews. Thi
 
 After the scraping is completed, you’ll be able to analyze your customer reviews directly from the application. Enjoy gaining valuable insights from your data!  
 
+## Key Features of the Application  
+
+### Date Range Filtering  
+- Define two distinct periods (Period A and Period B) using the date picker to filter reviews based on their publication dates. This allows for comparative analysis between different time frames.
+
+### Dynamic Filtering Options  
+- Filter reviews by categories, polarities, and star ratings. The application automatically extracts unique categories and polarities from the fetched reviews, making it easy to narrow down your analysis.
+
+### Review Display  
+- View the filtered reviews in a structured format, including star ratings, publication dates, and review content. Reviews are sorted by date, showing the most recent ones first.
+
+### Analytics Dashboard  
+- Access an analytics section that provides various statistics, including:
+  - Total number of reviews for each period.
+  - Sentiment analysis results, showing the distribution of polarities.
+  - Rating distribution across different star ratings.
+- The application calculates and displays the evolution of review counts between the two periods.
+
+### User-Friendly Interface  
+- The application features a clean and intuitive interface, with sections for inputting URLs, applying filters, and viewing reviews and analytics. Easily toggle between the reviews and analytics views for a comprehensive understanding of your customer feedback.
+
+By following these steps and utilizing the key features, you can effectively analyze customer reviews and gain valuable insights to enhance your business strategies.
+
 
 ## Value Proposition and Future Directions
 
