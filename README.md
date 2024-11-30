@@ -78,17 +78,20 @@ To run the FastAPI application on port 8000, follow these steps:
 
 To run the React application on port 3000, follow these steps:
 
-1. Navigate to the React application directory:
+1. Install Node.js:
+   https://nodejs.org/en
+
+2. Navigate to the React application directory:
    ```bash
    cd ./gen_ai_for_business_course/frontend
    ```
 
-2. Install the dependencies if not already done:
+3. Install the dependencies if not already done:
    ```bash
    npm install
    ```
 
-3. Launch the application:
+4. Launch the application:
    ```bash
    npm start
    ```
