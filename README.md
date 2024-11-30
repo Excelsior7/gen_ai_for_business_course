@@ -1,6 +1,5 @@
 # Albert School MSc 2 - GEN AI FOR BUSINESS COURSE
 
-
 # Google Reviews Analysis with AI  
 
 This project allows you to analyze Google reviews for a specific establishment using intelligent categorization powered entirely by artificial intelligence.  
@@ -72,7 +71,7 @@ To run the FastAPI application on port 8000, follow these steps:
 
 3. Launch the application:
    ```bash
-   uvicorn main:app --host 0.0.0.0 --port 8000
+   fastapi run fastapi_app.py --port 8000
    ```
 
 ## Running the React Application
@@ -94,10 +93,13 @@ To run the React application on port 3000, follow these steps:
    npm start
    ```
 
-## API Key Configuration
+## Important Note
 
+### Scraping limit
+In the file `backend/scraping_apify_service.py`, modify the parameter **maxReviews**, which specifies the maximum number of reviews to be scraped from Google. Be cautious, as increasing this number could lead to higher costs later on with OpenAI.
+
+### API Key Configuration
 Don't forget to replace `api-key` in the file backend/.env with your OpenAI API key for the AI service to work properly.
-
 
 
 # How to Use the Application  
@@ -129,3 +131,18 @@ Once the URL is submitted, the application will start scraping your reviews. Thi
 ## Step 4: Analyze Your Customer Reviews  
 
 After the scraping is completed, you’ll be able to analyze your customer reviews directly from the application. Enjoy gaining valuable insights from your data!  
+
+
+## Value Proposition and Future Directions
+
+### Value Proposition for Businesses  
+
+- **Time-Saving**: The application eliminates the need for manual review analysis, automating the process and saving valuable time.  
+- **Enhanced Customer Satisfaction**: It allows businesses to quickly identify their strengths to emphasize and weaknesses to address, fostering improved customer experience.
+
+### Limitations and Future Directions  
+
+- **Current Limitations**: The accuracy of the analysis may be affected by the quality of the available data. For example, a limited number of reviews or irrelevant comments can impact the results.  
+- **Future Prospects**: Expanding to include additional sources such as TripAdvisor, Yelp, or social media to enrich the analysis and diversify insights.
+
+
