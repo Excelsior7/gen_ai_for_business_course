@@ -20,9 +20,9 @@ The backend consists of two main components:
    Once the reviews are extracted, they are sent to the OpenAI API using a prompt (shared below). This script automatically categorizes each review and assigns a sentiment: positive or negative.  
 
 ### OpenAI prompt
-
-**prompt_system** = "Your role is to automatically categorize a company's reviews."     
-**prompt** = f"""
+```
+prompt_system = "Your role is to automatically categorize a company's reviews."     
+prompt = f"""
 CONTEXT:
 I will share with you a JSON file containing a set of reviews about a company. You should interpret the JSON as follows: {{"id":"comment"}}.
 
@@ -44,8 +44,9 @@ Important note: I only want the JSON as output, nothing else. For example, I do 
 JSON FILE:
 {reviews_text_only}
 """
+```
 
-# Usage
+# Installation
 
 ## Cloning the GitHub Repository
 
@@ -96,3 +97,35 @@ To run the React application on port 3000, follow these steps:
 ## API Key Configuration
 
 Don't forget to replace `api-key` in the file backend/.env with your OpenAI API key for the AI service to work properly.
+
+
+
+# How to Use the Application  
+
+Now that both the FastAPI and React applications are running, you can take full advantage of the AI's analytical capabilities.  
+
+## Step 1: Find Your Google Maps URL  
+
+The first screen of the React application asks you to enter a URL. This URL should be the Google Maps link where all your customer reviews are listed.  
+
+### How to Find Your Google Maps URL  
+1. Go to [Google Maps](https://www.google.com/maps).  
+2. Enter the name of your business in the search bar.  
+3. Navigate to the page containing your business details and customer reviews.  
+
+For example, here is the URL for FNAC located at Saint-Lazare - Paris 75009:  
+[Google Map FNAC Saint Lazare](https://www.google.com/maps/place/Fnac/@48.8753518,2.3244684,587m/data=!3m3!1e3!4b1!5s0x47e66e35bf0f74d1:0x7edf0a3a30afbaac!4m6!3m5!1s0x47e66e3598f16f2d:0x6b4f6b9039ea848!8m2!3d48.8753518!4d2.3270433!16s%2Fg%2F1v2ppjbk?entry=ttu&g_ep=EgoyMDI0MTEyNC4xIKXMDSoASAFQAw%3D%3D)  
+
+4. Copy the URL from the browser's address bar.  
+
+## Step 2: Paste the URL into the Application  
+
+Paste the copied URL into the search bar on your React application’s interface.  
+
+## Step 3: Wait for the Scraping to Complete  
+
+Once the URL is submitted, the application will start scraping your reviews. This process takes a few seconds.  
+
+## Step 4: Analyze Your Customer Reviews  
+
+After the scraping is completed, you’ll be able to analyze your customer reviews directly from the application. Enjoy gaining valuable insights from your data!  
