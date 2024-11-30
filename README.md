@@ -102,7 +102,7 @@ To run the React application on port 3000, follow these steps:
 In the file `backend/scraping_apify_service.py`, modify the parameter **maxReviews**, which specifies the maximum number of reviews to be scraped from Google. Be cautious, as increasing this number could lead to higher costs later on with OpenAI.
 
 ### API Key Configuration
-Don't forget to replace `api-key` in the file backend/.env with your OpenAI API key for the AI service to work properly.
+Don't forget to replace `api-key` in the file `backend/.env` with your OpenAI API key for the AI service to work properly.
 
 
 # How to Use the Application  
